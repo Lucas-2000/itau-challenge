@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Transaction } from "../src/models/transaction";
+import { Transaction } from "../../src/models/transaction";
 
 describe("Transaction model", () => {
   test("Instance transaction", () => {
