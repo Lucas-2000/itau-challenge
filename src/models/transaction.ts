@@ -11,24 +11,34 @@ export class Transaction {
       throw new Error("Date Hour must be less than Date Time now");
     }
 
+    if (!this.isDecimalNumber(props.value)) {
+      throw new Error("Value must be a decimal");
+    }
+
     this.props = props;
   }
 
-  getValue(): number {
+  get value(): number {
     return this.props.value;
   }
 
-  setValue(value: number): void {
+  set value(value: number) {
     this.props.value = value;
   }
 
-  getDateHour(): Date {
+  get dateHour(): Date {
     return this.props.dateHour;
   }
 
-  setDateHour(dateHour: Date): void {
+  set dateHour(dateHour: Date) {
     this.props.dateHour = dateHour;
   }
+
+  isDecimalNumber = (num: number): boolean => {
+    const numStr = num.toString();
+
+    return numStr.includes(".");
+  };
 
   getSummary(): TransactionProps {
     return {

@@ -11,6 +11,17 @@ describe("Transaction model", () => {
     expect(transaction).toBeInstanceOf(Transaction);
   });
 
+  test("Not Instance transaction if value is not decimal", () => {
+    const createTransaction = () => {
+      new Transaction({
+        value: 15,
+        dateHour: new Date(2023, 11, 1, 18, 19, 20),
+      });
+    };
+
+    expect(createTransaction).toThrow(Error);
+  });
+
   test("Not instance transaction if date is higher then the current date", () => {
     const createTransaction = () => {
       new Transaction({
