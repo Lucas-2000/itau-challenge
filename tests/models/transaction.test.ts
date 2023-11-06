@@ -32,4 +32,15 @@ describe("Transaction model", () => {
 
     expect(createTransaction).toThrow(Error);
   });
+
+  test("Return true if is a decimal value", () => {
+    const transaction = new Transaction({
+      value: 15.99,
+      dateHour: new Date(),
+    });
+
+    const res = transaction.isDecimalNumber(transaction.value);
+
+    expect(res).toBe(true);
+  });
 });

@@ -9,48 +9,22 @@ export interface StatisticProps {
 export class Statistic {
   private props: StatisticProps;
 
-  constructor(props: StatisticProps) {
-    this.props = props;
+  constructor() {
+    this.props = {
+      count: 0,
+      sum: 0,
+      avg: 0,
+      min: Number.MAX_VALUE,
+      max: Number.MIN_VALUE,
+    };
   }
 
-  get count(): number {
-    return this.props.count;
-  }
-
-  set count(count: number) {
-    this.props.count = count;
-  }
-
-  get sum(): number {
-    return this.sum;
-  }
-
-  set sum(value: number) {
-    this.sum = value;
-  }
-
-  get avg(): number {
-    return this.avg;
-  }
-
-  set avg(value: number) {
-    this.avg = value;
-  }
-
-  get min(): number {
-    return this.min;
-  }
-
-  set min(value: number) {
-    this.min = value;
-  }
-
-  get max(): number {
-    return this.max;
-  }
-
-  set max(value: number) {
-    this.max = value;
+  addTransaction(transactionValue: number) {
+    this.props.count++;
+    this.props.sum += transactionValue;
+    this.props.avg = this.props.sum / this.props.count;
+    this.props.min = Math.min(this.props.min, transactionValue);
+    this.props.max = Math.max(this.props.max, transactionValue);
   }
 
   getSummary(): StatisticProps {
@@ -60,6 +34,16 @@ export class Statistic {
       avg: this.props.avg,
       min: this.props.min,
       max: this.props.max,
+    };
+  }
+
+  reset() {
+    this.props = {
+      count: 0,
+      sum: 0,
+      avg: 0,
+      min: Number.MAX_VALUE,
+      max: Number.MIN_VALUE,
     };
   }
 }
