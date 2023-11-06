@@ -15,6 +15,10 @@ export class Transaction {
       throw new Error("Value must be a decimal");
     }
 
+    if (props.value < 0) {
+      throw new Error("Value must be positive");
+    }
+
     this.props = props;
   }
 

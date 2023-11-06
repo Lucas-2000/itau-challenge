@@ -33,6 +33,17 @@ describe("Transaction model", () => {
     expect(createTransaction).toThrow(Error);
   });
 
+  test("Not instance transaction if value is negative", () => {
+    const createTransaction = () => {
+      new Transaction({
+        value: -15.99,
+        dateHour: new Date(),
+      });
+    };
+
+    expect(createTransaction).toThrow(Error);
+  });
+
   test("Return true if is a decimal value", () => {
     const transaction = new Transaction({
       value: 15.99,
