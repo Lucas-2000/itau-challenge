@@ -1,3 +1,5 @@
+import { CustomError } from "../utils/error/customError";
+
 export interface TransactionProps {
   value: number;
   dateHour: Date;
@@ -8,15 +10,18 @@ export class Transaction {
 
   constructor(props: TransactionProps) {
     if (props.dateHour > new Date()) {
-      throw new Error("Date Hour must be less than Date Time now");
+      throw new CustomError(
+        "Date Hour must be less than Date Time now",
+        "INVALID_HOUR"
+      );
     }
 
     if (!this.isDecimalNumber(props.value)) {
-      throw new Error("Value must be a decimal");
+      throw new CustomError("Value must be a decimal", "INVALID_VALUE");
     }
 
     if (props.value < 0) {
-      throw new Error("Value must be positive");
+      throw new CustomError("Value must be positive", "INVALID_VALUE");
     }
 
     this.props = props;

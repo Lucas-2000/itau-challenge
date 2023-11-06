@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { InMemoryTransactionRepository } from "../../../src/repositories/transactions/inMemory/InMemoryTransactionRepository";
 import { Transaction } from "../../../src/models/transaction";
+import { InMemoryTransactionRepository } from "../../../src/repositories/transactions/inMemory/inMemoryTransactionRepository";
 
 describe("In memory transaction repository", () => {
   test("Create transaction", async () => {
