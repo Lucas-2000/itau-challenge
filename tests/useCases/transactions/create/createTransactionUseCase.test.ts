@@ -1,8 +1,8 @@
-import { CreateTransactionUseCase } from "./../../../src/useCases/transactions/create/createTransactionUseCase";
-import { InMemoryTransactionRepository } from "./../../../src/repositories/transactions/inMemory/inMemoryTransactionRepository";
+import { CreateTransactionUseCase } from "../../../../src/useCases/transactions/create/createTransactionUseCase";
+import { InMemoryTransactionRepository } from "../../../../src/repositories/transactions/inMemory/inMemoryTransactionRepository";
 import { describe, expect, test } from "bun:test";
-import { Transaction } from "../../../src/models/transaction";
-import { CustomError } from "../../../src/utils/error/customError";
+import { Transaction } from "../../../../src/models/transaction";
+import { CustomError } from "../../../../src/utils/error/customError";
 
 describe("Create transaction use case", () => {
   let inMemoryTransactionRepository = new InMemoryTransactionRepository();
