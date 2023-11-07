@@ -11,7 +11,7 @@ describe("Create Transaction Controller", () => {
 
     expect(response.body).toEqual({
       statusCode: 201,
-      body: "User created successfully",
+      body: "Transaction created successfully",
       error: null,
     });
   });

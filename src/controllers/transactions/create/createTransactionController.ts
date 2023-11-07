@@ -16,7 +16,7 @@ export class CreateTransactionController {
         await this.createTransactionUseCase.execute({ value, dateHour });
 
         return new CustomRes({
-          body: "User created successfully",
+          body: "Transaction created successfully",
         }).created();
       } catch (error) {
         if (error instanceof CustomError) {

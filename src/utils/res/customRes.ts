@@ -11,6 +11,14 @@ export class CustomRes {
     this.props = props;
   }
 
+  ok() {
+    return {
+      body: this.props.body ?? "There is no body",
+      statusCode: this.props.statusCode ?? 200,
+      error: this.props.error ?? null,
+    };
+  }
+
   created() {
     return {
       body: this.props.body ?? "There is no body",
