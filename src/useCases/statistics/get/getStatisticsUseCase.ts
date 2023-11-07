@@ -13,6 +13,8 @@ export class GetStatisticsUseCase implements UseCase<void, StatisticProps[]> {
   async execute(): Promise<StatisticProps[]> {
     const statistic = new Statistic();
 
+    statistic.reset();
+
     const transactions = await this.transactionRepository.findAll();
 
     const processedTransactions = new Set<Transaction>();
