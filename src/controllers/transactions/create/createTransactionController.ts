@@ -21,13 +21,13 @@ export class CreateTransactionController {
       } catch (error) {
         if (error instanceof CustomError) {
           return new CustomRes({
-            body: error.name,
-            error: error.message,
+            body: error.message,
+            error: error.name,
           }).unprocessableEntity();
         } else if (error instanceof Error) {
           return new CustomRes({
-            body: error.name,
-            error: error.message,
+            body: error.message,
+            error: error.name,
           }).badRequest();
         }
       }
