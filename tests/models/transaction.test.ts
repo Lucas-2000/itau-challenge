@@ -88,4 +88,30 @@ describe("Transaction model", () => {
       expect(res).not.toContain(transactionLongAgo);
     });
   });
+
+  test("Get and set value", () => {
+    const transaction = new Transaction({
+      value: 15.99,
+      dateHour: new Date(),
+    });
+
+    expect(transaction.value).toBe(15.99);
+
+    transaction.value = 10.0;
+    expect(transaction.value).toBe(10.0);
+  });
+
+  test("Get and set dateHour", () => {
+    const initialDate = new Date(2022, 12, 1, 10, 0, 0);
+    const updatedDate = new Date(2023, 1, 1, 12, 0, 0);
+    const transaction = new Transaction({
+      value: 15.99,
+      dateHour: initialDate,
+    });
+
+    expect(transaction.dateHour).toEqual(initialDate);
+
+    transaction.dateHour = updatedDate;
+    expect(transaction.dateHour).toEqual(updatedDate);
+  });
 });
