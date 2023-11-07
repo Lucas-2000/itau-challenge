@@ -8,6 +8,10 @@ export class InMemoryTransactionRepository implements TransactionRepository {
     this.transactions.push(transaction);
   }
 
+  async findAll(): Promise<Transaction[]> {
+    return this.transactions;
+  }
+
   async delete(): Promise<void> {
     this.transactions.splice(0, this.transactions.length);
   }

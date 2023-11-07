@@ -49,6 +49,15 @@ export class Transaction {
     return numStr.includes(".");
   };
 
+  getLast60secondsTransactions(transactions: Transaction[]): Transaction[] {
+    const now = new Date();
+    const sixtySecondsAgo = new Date(now.getTime() - 60 * 1000);
+
+    return transactions.filter((t) => {
+      return t.dateHour >= sixtySecondsAgo && t.dateHour <= now;
+    });
+  }
+
   getSummary(): TransactionProps {
     return {
       value: this.props.value,

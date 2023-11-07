@@ -54,4 +54,38 @@ describe("Transaction model", () => {
 
     expect(res).toBe(true);
   });
+
+  test("Return last 60 seconds transactions", () => {
+    test("Return last 60 seconds transactions", () => {
+      const now = new Date();
+      const transactionNow = new Transaction({
+        value: 15.99,
+        dateHour: now,
+      });
+
+      const longAgo = new Date(now.getTime() - 61 * 1000);
+      const transactionLongAgo = new Transaction({
+        value: 10.0,
+        dateHour: longAgo,
+      });
+
+      const lessThan60SecondsAgo = new Date(now.getTime() - 30 * 1000);
+      const transactionLessThan60SecondsAgo = new Transaction({
+        value: 20.0,
+        dateHour: lessThan60SecondsAgo,
+      });
+
+      const transactions = [
+        transactionNow,
+        transactionLongAgo,
+        transactionLessThan60SecondsAgo,
+      ];
+
+      const res = transactionNow.getLast60secondsTransactions(transactions);
+
+      expect(res).toContain(transactionNow);
+      expect(res).toContain(transactionLessThan60SecondsAgo);
+      expect(res).not.toContain(transactionLongAgo);
+    });
+  });
 });

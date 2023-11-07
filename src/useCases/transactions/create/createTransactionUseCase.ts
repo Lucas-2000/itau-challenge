@@ -5,7 +5,7 @@ import { TransactionRepository } from "../../../repositories/transactions/transa
 
 interface Data {
   value: number;
-  dateHour: Date;
+  dateHour?: Date;
 }
 
 export class CreateTransactionUseCase implements UseCase<Data, void> {
@@ -13,7 +13,10 @@ export class CreateTransactionUseCase implements UseCase<Data, void> {
 
   async execute({ value, dateHour }: Data): Promise<void> {
     try {
-      const transaction = new Transaction({ value, dateHour });
+      const transaction = new Transaction({
+        value,
+        dateHour: dateHour ?? new Date(),
+      });
 
       await this.transactionRepository.create(transaction);
     } catch (error) {

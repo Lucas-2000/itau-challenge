@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { InMemoryStatisticRepository } from "../../../src/repositories/statistics/inMemory/InMemoryStatisticRepository";
 import { Statistic } from "../../../src/models/statistic";
-import { InMemoryTransactionRepository } from "../../../src/repositories/transactions/inMemory/InMemoryTransactionRepository";
 import { Transaction } from "../../../src/models/transaction";
+import { InMemoryStatisticRepository } from "../../../src/repositories/statistics/inMemory/inMemoryStatisticRepository";
+import { InMemoryTransactionRepository } from "../../../src/repositories/transactions/inMemory/inMemoryTransactionRepository";
 
 describe("In memory statistic repository", () => {
   test("Add statistics", async () => {
