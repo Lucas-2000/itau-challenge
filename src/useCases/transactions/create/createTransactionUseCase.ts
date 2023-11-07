@@ -23,10 +23,7 @@ export class CreateTransactionUseCase implements UseCase<Data, void> {
       if (error instanceof CustomError) {
         throw new CustomError(error.message, error.name);
       } else {
-        throw new CustomError(
-          "Error on creating transaction",
-          "ERROR_CODE_NOT_FOUND"
-        );
+        throw new Error("Error on creating transaction");
       }
     }
   }

@@ -2,10 +2,11 @@
   "name": "challenge",
   "version": "1.0.50",
   "scripts": {
-    "test": "bun test --watch",
+    "test": "bun test",
     "dev": "bun run --watch src/config/server/index.ts"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^0.7.4",
     "elysia": "latest"
   },
   "devDependencies": {
