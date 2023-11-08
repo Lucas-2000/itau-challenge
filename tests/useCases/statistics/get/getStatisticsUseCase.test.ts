@@ -33,13 +33,13 @@ describe("Get statistics use case", () => {
 
     const statistics = await getStatisticsUseCase.execute();
 
-    expect(statistics[0]).toHaveProperty("count");
-    expect(statistics[0]).toHaveProperty("sum");
-    expect(statistics[0]).toHaveProperty("avg");
-    expect(statistics[0]).toHaveProperty("min");
-    expect(statistics[0]).toHaveProperty("max");
+    expect(statistics).toHaveProperty("count");
+    expect(statistics).toHaveProperty("sum");
+    expect(statistics).toHaveProperty("avg");
+    expect(statistics).toHaveProperty("min");
+    expect(statistics).toHaveProperty("max");
 
-    expect(statistics[0].count).toBe(2);
-    expect(statistics[0].sum).toBeCloseTo(44.43, 2);
+    expect(statistics.count).toBe(2);
+    expect(statistics.sum).toBeCloseTo(44.43, 2);
   });
 });

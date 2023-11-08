@@ -19,4 +19,4 @@ const deleteTransactionUseCase = new DeleteTransactionUseCase(
 );
 new DeleteTransactionController(transactionRoutes, deleteTransactionUseCase);
 
-export { transactionRoutes };
+export { transactionRoutes, inMemoryTransactionRepository };

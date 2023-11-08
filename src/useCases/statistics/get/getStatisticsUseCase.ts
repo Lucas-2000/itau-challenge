@@ -4,13 +4,13 @@ import { StatisticRepository } from "../../../repositories/statistics/statisticR
 import { TransactionRepository } from "../../../repositories/transactions/transactionRepository";
 import { UseCase } from "../../../utils/interfaces/useCase";
 
-export class GetStatisticsUseCase implements UseCase<void, StatisticProps[]> {
+export class GetStatisticsUseCase implements UseCase<void, StatisticProps> {
   constructor(
     private statisticRepository: StatisticRepository,
     private transactionRepository: TransactionRepository
   ) {}
 
-  async execute(): Promise<StatisticProps[]> {
+  async execute(): Promise<StatisticProps> {
     const statistic = new Statistic();
 
     statistic.reset();
@@ -33,12 +33,6 @@ export class GetStatisticsUseCase implements UseCase<void, StatisticProps[]> {
 
     await this.statisticRepository.add(statistic);
 
-    const statistics = await this.statisticRepository.get();
-
-    const statisticsSummary: StatisticProps[] = statistics.map((statistic) =>
-      statistic.getSummary()
-    );
-
-    return statisticsSummary;
+    return statistic.getSummary();
   }
 }

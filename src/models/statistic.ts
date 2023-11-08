@@ -14,8 +14,8 @@ export class Statistic {
       count: 0,
       sum: 0,
       avg: 0,
-      min: Number.MAX_VALUE,
-      max: Number.MIN_VALUE,
+      min: Number.MAX_SAFE_INTEGER,
+      max: 0,
     };
   }
 
@@ -42,8 +42,8 @@ export class Statistic {
       count: 0,
       sum: 0,
       avg: 0,
-      min: Number.MAX_VALUE,
-      max: Number.MIN_VALUE,
+      min: Number.MAX_SAFE_INTEGER,
+      max: 0,
     };
   }
 }

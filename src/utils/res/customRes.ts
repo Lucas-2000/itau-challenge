@@ -1,5 +1,5 @@
 interface CustomResProps {
-  body?: string;
+  body?: string | object;
   statusCode?: number;
   error?: string;
 }
