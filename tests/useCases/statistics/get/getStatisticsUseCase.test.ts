@@ -31,7 +31,7 @@ describe("Get statistics use case", () => {
     await createTransactionUseCase.execute(transaction1);
     await createTransactionUseCase.execute(transaction2);
 
-    const statistics = await getStatisticsUseCase.execute();
+    const statistics = await getStatisticsUseCase.execute({ time: 60 });
 
     expect(statistics).toHaveProperty("count");
     expect(statistics).toHaveProperty("sum");

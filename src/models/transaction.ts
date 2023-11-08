@@ -49,12 +49,15 @@ export class Transaction {
     return numStr.includes(".");
   };
 
-  getLast60secondsTransactions(transactions: Transaction[]): Transaction[] {
+  getLastTransactionsForTheTime(
+    transactions: Transaction[],
+    time: number
+  ): Transaction[] {
     const now = new Date();
-    const sixtySecondsAgo = new Date(now.getTime() - 60 * 1000);
+    const timeAgo = new Date(now.getTime() - time * 1000);
 
     return transactions.filter((t) => {
-      return t.dateHour >= sixtySecondsAgo && t.dateHour <= now;
+      return t.dateHour >= timeAgo && t.dateHour <= now;
     });
   }
 

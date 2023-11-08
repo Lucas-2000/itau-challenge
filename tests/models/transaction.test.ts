@@ -81,7 +81,10 @@ describe("Transaction model", () => {
         transactionLessThan60SecondsAgo,
       ];
 
-      const res = transactionNow.getLast60secondsTransactions(transactions);
+      const res = transactionNow.getLastTransactionsForTheTime(
+        transactions,
+        60
+      );
 
       expect(res).toContain(transactionNow);
       expect(res).toContain(transactionLessThan60SecondsAgo);

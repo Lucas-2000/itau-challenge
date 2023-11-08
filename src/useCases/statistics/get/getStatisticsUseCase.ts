@@ -4,13 +4,17 @@ import { StatisticRepository } from "../../../repositories/statistics/statisticR
 import { TransactionRepository } from "../../../repositories/transactions/transactionRepository";
 import { UseCase } from "../../../utils/interfaces/useCase";
 
-export class GetStatisticsUseCase implements UseCase<void, StatisticProps> {
+interface Data {
+  time: number;
+}
+
+export class GetStatisticsUseCase implements UseCase<Data, StatisticProps> {
   constructor(
     private statisticRepository: StatisticRepository,
     private transactionRepository: TransactionRepository
   ) {}
 
-  async execute(): Promise<StatisticProps> {
+  async execute({ time }: Data): Promise<StatisticProps> {
     const statistic = new Statistic();
 
     statistic.reset();
@@ -20,8 +24,10 @@ export class GetStatisticsUseCase implements UseCase<void, StatisticProps> {
     const processedTransactions = new Set<Transaction>();
 
     transactions.forEach((transaction) => {
-      const last60sTransactions =
-        transaction.getLast60secondsTransactions(transactions);
+      const last60sTransactions = transaction.getLastTransactionsForTheTime(
+        transactions,
+        time
+      );
 
       last60sTransactions.forEach((t) => {
         if (!processedTransactions.has(t)) {
